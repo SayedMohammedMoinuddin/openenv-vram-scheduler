@@ -1,0 +1,13 @@
+name: "vram-scheduler-env"
+version: "1.0.0"
+description: "An RL environment simulating dynamic VRAM scheduling for LLM inference on consumer hardware."
+api:
+  type: "rest"
+  port: 7860
+tasks:
+  - id: "task_1_easy"
+    description: "Survive VRAM scheduling with standard queue."
+  - id: "task_2_medium"
+    description: "Survive VRAM scheduling with tight memory limits."
+  - id: "task_3_hard"
+    description: "Survive VRAM scheduling with extreme hardware bottlenecks."
