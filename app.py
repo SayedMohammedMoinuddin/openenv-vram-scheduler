@@ -53,6 +53,23 @@ async def step(request: StepRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/state")
+def get_state():
+    # Safely fetch the next layer specs
+    next_layer_mb = 0.0
+    next_layer_flops = 0.0
+    if env.current_idx < len(env.tensor_queue):
+        _, next_layer_mb, next_layer_flops = env.tensor_queue[env.current_idx]
+        
+    return {
+        "observation": {
+            "vram_usage_mb": float(env.vram_usage_mb),
+            "pcie_util": float(env.pcie_util),
+            "next_layer_mb": float(next_layer_mb),
+            "next_layer_flops": float(next_layer_flops)
+        }
+    }
+
 @app.get("/info")
 async def get_info():
     try:
