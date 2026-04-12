@@ -4,8 +4,7 @@ from pydantic import BaseModel
 from typing import Dict, Any
 import numpy as np
 
-from vram_scheduling_env import VramSchedulingEnv
-
+from .vram_scheduling_env import VramSchedulingEnv
 app = FastAPI(title="VRAM Scheduling Environment API")
 
 # Instantiate a single global environment
