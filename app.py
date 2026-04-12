@@ -72,24 +72,26 @@ def get_state():
 
 @app.get("/info")
 async def get_info():
-    try:
-        info_data = {
-            "action_space": {
-                "type": "Discrete",
-                "n": env.action_space.n
+    return {
+        "action_space": {
+            "type": "Discrete",
+            "n": 3
+        },
+        "observation_space": {
+            "vram_usage_mb": {
+                "low": 0.0, "high": float(env.max_vram_mb), "shape": [], "dtype": "float32"
             },
-            "observation_space": {}
-        }
-        for key, space in env.observation_space.spaces.items():
-            info_data["observation_space"][key] = {
-                "low": float(space.low),
-                "high": float(space.high),
-                "shape": space.shape,
-                "dtype": str(space.dtype)
+            "pcie_util": {
+                "low": 0.0, "high": 1.0, "shape": [], "dtype": "float32"
+            },
+            "next_layer_mb": {
+                "low": 0.0, "high": 2048.0, "shape": [], "dtype": "float32"
+            },
+            "next_layer_flops": {
+                "low": 0.0, "high": 1e12, "shape": [], "dtype": "float32"
             }
-        return info_data
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        }
+    }
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=7860)
