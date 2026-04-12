@@ -5,6 +5,7 @@ from typing import Dict, Any
 import numpy as np
 
 from .vram_scheduling_env import VramSchedulingEnv
+
 app = FastAPI(title="VRAM Scheduling Environment API")
 
 # Instantiate a single global environment
@@ -92,5 +93,12 @@ async def get_info():
         }
     }
 
+def main():
+    """
+    Main entry point for the server. 
+    Required for OpenEnv multi-mode deployment.
+    """
+    uvicorn.run("server.app:app", host="0.0.0.0", port=7860, reload=False)
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=7860)
+    main()
