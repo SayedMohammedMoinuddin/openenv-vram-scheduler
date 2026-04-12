@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openenv-vram-scheduler"
+version = "1.0.0"
+description = "VRAM Scheduling Environment"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "gymnasium",
+    "numpy",
+    "pydantic",
+    "requests",
+    "openai"
+]
