@@ -9,6 +9,7 @@ description = "VRAM Scheduling Environment"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "openenv-core>=0.2.0",  # MANDATORY dependency added here
     "fastapi",
     "uvicorn",
     "gymnasium",
@@ -17,3 +18,6 @@ dependencies = [
     "requests",
     "openai"
 ]
+
+[project.scripts]
+server = "server.app:app"  # MANDATORY entry point added here
