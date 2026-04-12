@@ -20,4 +20,4 @@ dependencies = [
 ]
 
 [project.scripts]
-server = "server.app:app"  # MANDATORY entry point added here
+server = "server.app:main"  # MANDATORY entry point added here
